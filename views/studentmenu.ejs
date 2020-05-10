@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/menu.css" >
+    <title>Student Menu</title>
+</head>
+<body>
+    <h2>Welcome Student <%=username%></h2>
+    <a href='/logout' class="w3-button w3-green" style="float:right;">Logout</a>
+    <ul class="vertical-menu" style="margin-top: 5%;">
+        <li> <a href='/viewat'>View Attendance</a> </li>
+        <li> <a href='/apwd'> Change Password</a></li>
+    </ul>
+    <h3><%=str%></h3>
+</body>
+</html>

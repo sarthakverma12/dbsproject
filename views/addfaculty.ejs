@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/assets/form.css">
+    <title>Document</title>
+</head>
+<script>
+    function myfunc()
+    {
+        var ar=document.getElementsByClassName('BCS');
+        var s=document.getElementById('BCS');
+        for(var i=0;i<ar.length;i++)
+        {
+            if(ar[i].checked)
+            s.value+='1';
+            else
+            s.value+='0';
+        }
+       ar=document.getElementsByClassName('IMT');
+       s=document.getElementById('IMT');
+        for(var i=0;i<ar.length;i++)
+        {
+            if(ar[i].checked)
+            s.value+='1';
+            else
+            s.value+='0';
+        }
+        ar=document.getElementsByClassName('IMG');
+       s=document.getElementById('IMG');
+        for(var i=0;i<ar.length;i++)
+        {
+            if(ar[i].checked)
+            s.value+='1';
+            else
+            s.value+='0';
+        }
+
+
+    }
+</script>
+<body>
+    <form action='/addft' method="POST">
+        <div class="container">
+     <label for="tid">Teacher ID:</label>
+     <input type="text" name="tid" placeholder="Enter Teacher ID"><br>
+     <label for="name">Name:</label>
+     <input type="text" name="name" placeholder="Enter name"><br>
+     <label for="Dept">Department:</label>
+     <input type="text" name="Dept" placeholder="Department"><br>
+     <label for="password">Set password:</label>
+     <input type="text" name="password" placeholder="Set password"><br>
+     <label for="BCS">Will teach BCS semester:</label>
+     <% for(var i=0; i<8; i++){ %>
+       <%=(i+1)%>
+     <input type="checkbox" name="BCS" class="BCS">
+     <% }  %>
+     <br><br>
+     <label for="IMT">Will teach IMT semester:</label>
+     <% for(var i=0; i<10; i++){ %>
+       <%=(i+1)%>
+     <input type="checkbox" name="IMT" class="IMT">
+     <% }  %>
+     <br><br>
+     <label for="IMG">Will teach IMG semester:</label>
+     <% for(var i=0; i<10; i++){ %>
+       <%=(i+1)%>
+     <input type="checkbox" name="IMG" class="IMG">
+     <% }  %>
+     <br><br>
+     <input name="BCSv" type="hidden" value="" id="BCS">
+     <input name="IMTv" type="hidden" value="" id="IMT">
+     <input name="IMGv" type="hidden" value="" id="IMG">
+     <input type="submit" value="Add" onclick='myfunc()' class="registerbtn">
+     <p><%=str%></p>
+    </div>
+    </form>
+</body>
+</html>

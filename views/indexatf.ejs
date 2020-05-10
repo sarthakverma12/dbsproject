@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Take Attendance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/public/assets/table.css" >
+</head>
+<body>
+
+    <div class="table-data">
+<h2 style="margin-left: 40%;">Attendance</h2>
+    <table border="1">
+        <tr>
+            <th>Rollno</th>
+            <th>Date</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+    
+       userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=data.rollno %></td>
+            <td><%=data.date %></td>
+        </tr>
+        <%   }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="2">No Data Found</td>
+            </tr>
+        <% } %>
+    </div>
+</body>
+</html>

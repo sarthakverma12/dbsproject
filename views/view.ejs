@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/assets/form.css" >
+    <title>Document</title>
+</head>
+<body>
+    <form action="/searchview" method="POST" >
+      <div class="container">
+        <input type="text" list="Course" name="Course" placeholder="Course">
+        <datalist id="Course">
+          <option value="IMT">
+          <option value="IMG">
+          <option value="BCS">
+        </datalist>
+        <input type="text" list="Semester" name="Semester" placeholder="Semester">
+        <datalist id="Semester">
+          <option value="1">
+          <option value="2">
+          <option value="3">
+            <option value="4">
+            <option value="5">
+            <option value="6">
+              <option value="7">
+                <option value="8">
+                <option value="9">
+                  <option value="10">
+    
+        </datalist>
+        <input type="submit" class="registerbtn">
+      </div>
+      </form>
+</body>
+</html>

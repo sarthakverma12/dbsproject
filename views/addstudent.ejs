@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/assets/form.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action='/addst' method="POST">
+    <div class="container">
+     <label for="rollno">Roll number:</label>
+     <input type="text" name="rollno" placeholder="Enter Roll number"><br>
+     <label for="name">Name:</label>
+     <input type="text" name="name" placeholder="Enter name"><br>
+     <label for="course">Course:</label>
+     <input type="text" name="course" placeholder="Enter course"><br>
+     <label for="dob">DOB:</label>
+     <input type="text" name="dob" placeholder="Enter DOB"><br>
+     <label for="sem">Semester:</label>
+     <input type="text" name="sem" placeholder="Enter Semester"><br>
+     <label for="password">Set password:</label>
+     <input type="text" name="password" placeholder="Set password"> 
+     <input type="submit" value="Add" class="registerbtn">
+     <p><%=str%></p>
+    </div>
+    </form>
+</body>
+</html>

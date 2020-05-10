@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/assets/form.css" >
+    <title>Document</title>
+</head>
+<body>
+    <form action="/searchft" method="POST">
+      <div class="container">
+        <input type="text" list="tid" name="tid" placeholder="TID">
+        <datalist id="tid">
+        <%userdata.forEach(data => { %>
+          <option value=<%=data.TID%>>
+          <% }); %>
+        </datalist>
+        <input type="submit" class="registerbtn">
+      </div>
+      </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/assets/form.css">
+    <title>Change Password</title>
+</head>
+<body>
+<form id="two" action="/chapwd" method="POST">
+    <div class="container">
+    <h2 style="margin-left: 40%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: normal;">Change Password</h2>
+     <label for="oldpassword">Enter old password:</label>
+     <input type="password" name="oldpassword" placeholder="Enter old password"> 
+     <label for="newpassword">Enter new password:</label>
+     <input type="password" name="newpassword" placeholder="Enter new password"> 
+     <input type="submit" value="Login" class="registerbtn">
+     <p><%=str%></p>
+    </div>
+</form>
+</body>
+</html>

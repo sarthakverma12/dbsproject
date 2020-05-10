@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<script>
+  function myfunc()
+  {
+     var ar=document.getElementsByTagName("input");
+     var s=document.getElementById("store");
+     for(var i=0;i<ar.length;i++)
+     {
+     
+          if(ar[i].type=='checkbox')
+          { if(ar[i].checked)
+             s.value+='1';
+            else
+             s.value+='0';
+     }
+    
+     }
+  }
+  </script>
+<html lang="en">
+<head>
+  <title>Take Attendance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/public/assets/table.css" >
+</head>
+<body>
+
+    <div class="table-data">
+<h2 style="margin-left: 45%;">Take Attendance</h2>
+<form action="/submit" method="POST">
+    <table border="1">
+        <tr>
+            <th>Roll no</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Date</th>
+            <th>Present</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+    
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=data.rollno %></td>
+            <td><%=data.name %></td>
+            <td><%=data.course %></td>
+            <td><%=data.date %></td>
+            <td><input type="checkbox" name="checkbox"></td>
+           
+        </tr>
+        <%   }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="5">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    <input name="Selected" type="hidden" value="" id="store">
+    <input type="submit" style="margin-left: 48%; margin-top: 10px;" onclick="myfunc(),alert('Attendance Taken')">
+</form>
+    </div>
+</body>
+</html>

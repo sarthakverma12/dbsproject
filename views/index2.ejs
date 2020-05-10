@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Take Attendance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/public/assets/table.css" >
+</head>
+<body>
+
+    <div class="table-data">
+<h2 style="margin-left: 40%;">Student list</h2>
+    <table border="1">
+        <tr>
+            <th>Roll no</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+    
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=data.rollno %></td>
+            <td><%=data.name %></td>
+            <td><%=data.course %></td>
+            <td><%=data.date %></td>
+            <td><a href='editst/<%=data.rollno%>'>Edit</a></td>
+            <td><a href='delst/<%=data.rollno%>' onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></td>
+      
+        
+        </tr>
+        <%   }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="6">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+   
+    </div>
+</body>
+</html>
