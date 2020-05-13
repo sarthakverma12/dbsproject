@@ -26,7 +26,7 @@ app.use('/public', express.static('public'));
 app.listen(port, function(){
     console.log("Server is running on " + port +" port");
 });
-var rec;
+
 app.get('/',(req,res,next)=>{
 	res.redirect('/logout');
 });
@@ -242,6 +242,7 @@ app.post('/searchview',(req,res)=>{
  });
 });
 var date;
+var rec;
 app.post('/search',(req,res)=>{
   
 	connection.query("select * from teaches where course=? and semester=? and TID=?",[req.body.Course,req.body.Semester,req.session.username],(err,data)=>{
@@ -249,12 +250,12 @@ app.post('/search',(req,res)=>{
 		   throw err;
 
       if(data.length)
-   { connection.query("select rollno,name,course,date,semester from student where semester=? and UPPER(course)=UPPER(?)",[req.body.Semester,req.body.Course],(err,data,fields)=>{
+   { connection.query("select rollno,name,course,date,semester from student where semester=? and UPPER(course)=UPPER(?)",[req.body.Semester,req.body.Course],(err,result,fields)=>{
            if(err)
-           throw err;
-           res.render('index.ejs',{userData: data});
-           rec=data;
+		   throw err;
+		   rec=result;
            date=req.body.date;
+           res.render('index.ejs',{userData: rec});
 	 });
    }
    else
@@ -265,15 +266,15 @@ app.post('/search',(req,res)=>{
 });
 app.post('/submit',(req,res)=>{
 	var x=req.body.Selected;
-	
-    for(var i=0;i<x.length;i++)
+	console.log(rec);
+    for(let i=0;i<x.length;i++)
     {
         if(x[i]=='1')
         {
-			connection.query('select * from attendance where TID=? and rollno=? and date=?',[rec[i].rollno,date,req.session.username],(err,data)=>{
+			connection.query('select * from attendance where rollno=? and TID=? and date=?',[rec[i].rollno,req.session.username,date],(err,data)=>{
 			 if(err)
 			 throw err;
-		      if(data.lenth==0)
+		      if(data.length==0)
              {  connection.query('insert into attendance values (?,?,?)',[rec[i].rollno,date,req.session.username],(err,result)=>{
                     
                  if(err)
@@ -398,7 +399,7 @@ app.get('/logout', function(req, res, next) {
 
   app.get('/addf',(req,res)=>{
 	if (req.session.loggedin && ath==1)  
-	res.render('addstudent.ejs',{str:""});
+	res.render('addfaculty.ejs',{str:""});
 	else
 	res.redirect('/admin');
 });
