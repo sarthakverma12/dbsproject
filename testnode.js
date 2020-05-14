@@ -89,6 +89,7 @@ app.get('/viewf',(req,res)=>{
 	 res.redirect('/faculty');
 })
 
+//Function to view attendance from faculty account
 app.post('/searchf',(req,res)=>{
 	  connection.query("select student.rollno,attendance.date from student,attendance where student.rollno=attendance.rollno and TID=? and upper(course)=upper(?) and semester=?",[req.session.username,req.body.Course,req.body.Semester],(err,data)=>{
 		  if(err)
@@ -97,6 +98,7 @@ app.post('/searchf',(req,res)=>{
 	  })
 })
 
+//Function to view list of teachers from admin account
 app.get('/viewft',(req,res)=>{
 	if (req.session.loggedin && ath==1)
 	{  connection.query("select * from faculty",(err,data,fields)=>{
@@ -121,6 +123,7 @@ app.get('/viewat',(req,res)=>{
   res.redirect('/student');
 });
 
+//function to view attendance from student account
 app.post('/searchft',(req,res)=>{
 	if (req.session.loggedin && ath==3)
   {	connection.query("select * from attendance where TID=? and rollno=?",[req.body.tid,req.session.username],(err,data)=>{
@@ -159,6 +162,7 @@ app.get('/editft/:id',(req,res)=>{
 	res.redirect('/admin');
 });
 
+//function to delete student
 app.get('/delst/:id',(req,res)=>{
 	if(req.session.loggedin && ath==1)
 	{
@@ -172,6 +176,7 @@ else
 res.redirect('/admin');
 });
 
+//function to delete faculty
 app.get('/delft/:id',(req,res)=>{
 	if (req.session.loggedin && ath==1)
 {	connection.query("delete from faculty where TID=?",[req.params.id],(err)=>{
@@ -183,6 +188,8 @@ app.get('/delft/:id',(req,res)=>{
 else
 res.redirect('/admin');
 });
+
+//function to edit student details
 app.post('/editst/:id',(req,res)=>{
     connection.query("update student set name=?,course=?,date=?,semester=?,password=? where rollno=?",[req.body.name,req.body.course,req.body.dob,req.body.sem,req.body.password,req.params.id],(err,data,fields)=>{
         if(err) throw err;
@@ -190,6 +197,7 @@ app.post('/editst/:id',(req,res)=>{
 	});
 });
 
+//function to edit faculty details
 app.post('/editft/:id',(req,res)=>{
     connection.query("update faculty set Name=?,Department=?,password=? where TID=?",[req.body.name,req.body.Dept,req.body.password,req.params.id],(err)=>{
 		if(err) 
@@ -243,6 +251,7 @@ app.post('/searchview',(req,res)=>{
 });
 var date;
 var rec;
+//function to display student list for taking attendance
 app.post('/search',(req,res)=>{
   
 	connection.query("select * from teaches where course=? and semester=? and TID=?",[req.body.Course,req.body.Semester,req.session.username],(err,data)=>{
@@ -264,6 +273,8 @@ app.post('/search',(req,res)=>{
    }
   });
 });
+
+//function for submitting attenadance from fauclty account
 app.post('/submit',(req,res)=>{
 	var x=req.body.Selected;
 	console.log(rec);
@@ -287,6 +298,7 @@ app.post('/submit',(req,res)=>{
     res.redirect('/take');
 });
 
+//student login function
 app.post('/authst', function(request, response) {
 	var username = request.body.Username;
 	var password = request.body.password;
@@ -308,6 +320,7 @@ app.post('/authst', function(request, response) {
 	}
 });
 
+//faculty login function
 app.post('/authft', function(request, response) {
 	var username = request.body.Username;
 	var password = request.body.password;
@@ -329,6 +342,7 @@ app.post('/authft', function(request, response) {
 	}
 });
 
+//admin login function
 app.post('/authad', function(request, response) {
 	var username = request.body.Username;
 	var password = request.body.password;
@@ -404,6 +418,7 @@ app.get('/logout', function(req, res, next) {
 	res.redirect('/admin');
 });
 
+//function to add student
   app.post('/addst',(req,res)=>{
    connection.query("select * from student where rollno=?",[req.body.rollno],(error,result)=>{
 	if(error)
@@ -420,6 +435,7 @@ app.get('/logout', function(req, res, next) {
  });
 });
 
+//function to add faculty
 app.post('/addft',(req,res)=>{
    
   connection.query("select * from faculty where TID=?",[req.body.tid],(error,result)=>{
@@ -470,6 +486,7 @@ else
 });	
 });
 
+
 app.get('/apwd',(req,res)=>{
 	if(req.session.loggedin)
 	res.render('apwd.ejs',{str: ""});
@@ -477,6 +494,7 @@ app.get('/apwd',(req,res)=>{
 	res.render('adminlogin',{str:""});
 });
 
+//function to change password
 app.post('/chapwd',(req,res)=>{
 	if(ath==1) {
 	connection.query("select password from admin where AID=?",[req.session.username],(err,data)=>{
