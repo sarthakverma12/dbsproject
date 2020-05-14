@@ -9,7 +9,7 @@
 <body>
     <form action="/searchft" method="POST">
       <div class="container">
-        <input type="text" list="tid" name="tid" placeholder="TID">
+        <input type="text" list="tid" name="tid" placeholder="TID" required>
         <datalist id="tid">
         <%userdata.forEach(data => { %>
           <option value=<%=data.TID%>>

@@ -23,11 +23,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="/public/assets/table.css" >
+  
 </head>
 <body>
 
     <div class="table-data">
-<h2 style="margin-left: 45%;">Take Attendance</h2>
+<h2 style="margin-left: 40%;">Take Attendance</h2>
 <form action="/submit" method="POST">
     <table border="1">
         <tr>
@@ -59,7 +60,7 @@
         <% } %>
     </table>
     <input name="Selected" type="hidden" value="" id="store">
-    <input type="submit" style="margin-left: 48%; margin-top: 10px;" onclick="myfunc(),alert('Attendance Taken')">
+    <input type="submit" class="registerbtn" onclick="myfunc(),alert('Attendance Taken')" >
 </form>
     </div>
 </body>

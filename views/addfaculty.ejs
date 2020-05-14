@@ -44,13 +44,13 @@
     <form action='/addft' method="POST">
         <div class="container">
      <label for="tid">Teacher ID:</label>
-     <input type="text" name="tid" placeholder="Enter Teacher ID"><br>
+     <input type="text" name="tid" placeholder="Enter Teacher ID" required><br>
      <label for="name">Name:</label>
-     <input type="text" name="name" placeholder="Enter name"><br>
+     <input type="text" name="name" placeholder="Enter name" required><br>
      <label for="Dept">Department:</label>
-     <input type="text" name="Dept" placeholder="Department"><br>
+     <input type="text" name="Dept" placeholder="Department" required><br>
      <label for="password">Set password:</label>
-     <input type="text" name="password" placeholder="Set password"><br>
+     <input type="text" name="password" placeholder="Set password" required><br>
      <label for="BCS">Will teach BCS semester:</label>
      <% for(var i=0; i<8; i++){ %>
        <%=(i+1)%>

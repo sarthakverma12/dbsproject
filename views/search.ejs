@@ -9,13 +9,13 @@
 <body>
     <form action="/search" method="POST">
       <div class="container">
-        <input type="text" list="Course" name="Course" placeholder="Course">
+        <input type="text" list="Course" name="Course" placeholder="Course" required>
         <datalist id="Course">
           <option value="IMT">
           <option value="IMG">
           <option value="BCS">
         </datalist>
-        <input type="text" list="Semester" name="Semester" placeholder="Semester">
+        <input type="text" list="Semester" name="Semester" placeholder="Semester" required>
         <datalist id="Semester">
           <option value="1">
           <option value="2">
@@ -30,7 +30,7 @@
     
         </datalist>
 
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="date" required>
     
         <input type="submit" class="registerbtn">
         <p><%=str%></p>

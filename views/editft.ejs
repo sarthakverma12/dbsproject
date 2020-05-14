@@ -44,11 +44,11 @@
     <form action='/editft/<%=tid%>' method="POST">
         <div class="container">
      <label for="name">Name:</label>
-     <input type="text" name="name" placeholder="Enter name"><br>
+     <input type="text" name="name" placeholder="Enter name" required><br>
      <label for="Dept">Department:</label>
-     <input type="text" name="Dept" placeholder="Department"><br>
+     <input type="text" name="Dept" placeholder="Department" required><br>
      <label for="password">Set password:</label>
-     <input type="text" name="password" placeholder="Set password"> 
+     <input type="text" name="password" placeholder="Set password" required> 
      <label for="BCS">Will teach BCS semester:</label>
      <% for(var i=0; i<8; i++){ %>
        <%=(i+1)%>
