@@ -16,28 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `faculty`
+-- Table structure for table `teaches`
 --
 
-DROP TABLE IF EXISTS `faculty`;
+DROP TABLE IF EXISTS `teaches`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `faculty` (
+CREATE TABLE `teaches` (
   `TID` int(10) NOT NULL,
-  `Name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `Department` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`TID`)
+  `course` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `semester` int(5) NOT NULL,
+  PRIMARY KEY (`TID`,`course`,`semester`),
+  CONSTRAINT `teaches_ibfk_1` FOREIGN KEY (`TID`) REFERENCES `faculty` (`TID`),
+  CONSTRAINT `teaches_ibfk_2` FOREIGN KEY (`TID`) REFERENCES `faculty` (`TID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `faculty`
+-- Dumping data for table `teaches`
 --
 
-LOCK TABLES `faculty` WRITE;
-/*!40000 ALTER TABLE `faculty` DISABLE KEYS */;
-/*!40000 ALTER TABLE `faculty` ENABLE KEYS */;
+LOCK TABLES `teaches` WRITE;
+/*!40000 ALTER TABLE `teaches` DISABLE KEYS */;
+INSERT INTO `teaches` VALUES (1,'BCS',2),(1,'IMG',5),(1,'IMT',4),(1,'IMT',7);
+/*!40000 ALTER TABLE `teaches` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-10 15:25:10
+-- Dump completed on 2020-05-14 16:51:58

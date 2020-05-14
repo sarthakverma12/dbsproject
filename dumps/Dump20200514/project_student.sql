@@ -16,30 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `attendance`
+-- Table structure for table `student`
 --
 
-DROP TABLE IF EXISTS `attendance`;
+DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendance` (
-  `rollno` int(5) NOT NULL,
+CREATE TABLE `student` (
+  `rollno` int(10) NOT NULL,
+  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `course` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `date` date NOT NULL,
-  `TID` int(10) NOT NULL,
-  PRIMARY KEY (`rollno`,`TID`,`date`),
-  KEY `TID` (`TID`),
-  CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`TID`) REFERENCES `faculty` (`TID`) ON DELETE CASCADE,
-  CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`rollno`) REFERENCES `student` (`rollno`) ON DELETE CASCADE
+  `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `semester` int(5) NOT NULL,
+  PRIMARY KEY (`rollno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `attendance`
+-- Dumping data for table `student`
 --
 
-LOCK TABLES `attendance` WRITE;
-/*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-/*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
+LOCK TABLES `student` WRITE;
+/*!40000 ALTER TABLE `student` DISABLE KEYS */;
+INSERT INTO `student` VALUES (1,'Sarthak Verma','BCS','2001-03-29','password',2),(2,'Amandeep Nokhwal','BCS','2001-05-21','password',2),(3,'Aman Goyal','BCS','2001-03-20','password',2);
+/*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-10 15:25:09
+-- Dump completed on 2020-05-14 16:51:57
